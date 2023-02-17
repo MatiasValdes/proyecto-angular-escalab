@@ -1,0 +1,13 @@
+<a class="content-card-link" (click)="detailProduct(dataProduct.id)">
+    <div class="card" style="width: 18rem;">
+        <img [src]="dataProduct.image ? dataProduct.image : 'http://placehold.it/500x500'" class="card-img-top" style="height: 280px;">
+        <div class="card-body">
+            <h5 class="card-title">{{dataProduct.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{dataProduct.description}}</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Category: {{dataProduct.category}}</li>
+            <li class="list-group-item">Price: {{dataProduct.price}}</li>
+        </ul>
+    </div>
+</a>

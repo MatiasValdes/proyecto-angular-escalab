@@ -1,0 +1,37 @@
+.card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-subtitle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.content-card-link {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.content-card-link:link {
+    text-decoration: none;
+}
+
+.content-card-link:visited {
+    text-decoration: none;
+}
+
+.content-card-link:hover {
+    text-decoration: none;
+}
+
+.content-card-link:active {
+    text-decoration: none;
+}
+
+.list-group-item {
+    background-color: #e3f2fd;
+}

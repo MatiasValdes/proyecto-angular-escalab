@@ -1,0 +1,13 @@
+<figure class="text-center" *ngIf="auth.user$ | async as user; else elseBlock">
+    <h3>Bienvenido {{user.name}}</h3>
+</figure>
+
+<ng-template #elseBlock>
+    <figure class="text-center">
+        <h3>Bienvenido</h3>
+    </figure>
+</ng-template>
+
+<div class="card-group" style="justify-content: space-around;">
+    <app-product [dataProduct]="data" *ngFor="let data of products;"></app-product>
+</div>

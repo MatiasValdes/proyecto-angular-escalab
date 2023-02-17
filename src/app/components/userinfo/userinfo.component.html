@@ -1,0 +1,10 @@
+<ng-container *ngIf="auth.user$ | async as user">
+    <figure class="text-center">
+        <h3>Perfil de usuario</h3>
+    </figure>
+    
+    <img src="assets/images/user.png" class="rounded mx-auto d-block user-img" alt="user_img">
+    <p class="text-center">Name: {{user.name}}</p>
+    <p class="text-center">Email: {{user.email}}</p>
+    <!-- <p class="text-center">Last login: {{user.last_login}}</p> -->
+</ng-container>

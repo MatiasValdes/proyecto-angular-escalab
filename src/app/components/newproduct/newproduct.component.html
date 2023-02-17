@@ -1,0 +1,66 @@
+<figure class="text-center">
+    <h3>Crear Producto</h3>
+</figure>
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="guardar()" class="needs-validation">
+    <div class="mb-3">
+        <label class="col-2 col-form-label">Title</label>
+        <div class="col-8">
+            <input class="form-control" type="text" name="title" placeholder="Title..." formControlName="title"
+                [ngClass]="{ 'is-invalid': myForm.controls['title'].touched && myForm.controls['title'].errors, 'is-valid': myForm.controls['title'].valid }">
+            <div *ngIf="myForm.controls['title'].touched && myForm.controls['title'].errors" class="invalid-feedback">
+                <div *ngIf="myForm.controls['title'].errors['required']">Title is required!</div>
+                <div *ngIf="myForm.controls['title'].errors['minlength']">Min length is 5!</div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="col-2 col-form-label">Description</label>
+        <div class="col-8">
+            <textarea class="form-control" type="text" name="description" placeholder="Description..."
+                formControlName="description" rows="3"
+                [ngClass]="{ 'is-invalid': myForm.controls['description'].touched && myForm.controls['description'].errors, 'is-valid': myForm.controls['description'].valid }">
+            </textarea>
+            <div *ngIf="myForm.controls['description'].touched && myForm.controls['description'].errors"
+                class="invalid-feedback">
+                <div *ngIf="myForm.controls['description'].errors['required']">Description is required!</div>
+                <div *ngIf="myForm.controls['description'].errors['minlength']">Min length is 5!</div>
+                <div *ngIf="myForm.controls['description'].errors['maxlength']">Max length is 100!</div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <div class="col-8">
+            <select class="form-select" name="category" formControlName="category" aria-label="Default select example"
+                [ngClass]="{ 'is-invalid': myForm.controls['category'].touched && myForm.controls['category'].errors, 'is-valid': myForm.controls['category'].valid }">
+                <option [ngValue]="null">Select category</option>
+                <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
+            </select>
+            <div *ngIf="myForm.controls['category'].touched && myForm.controls['category'].errors"
+                class="invalid-feedback">
+                <div *ngIf="myForm.controls['category'].errors['required']">Category is required!</div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <div class="col-8">
+            <input class="form-control" type="textbox" name="price" placeholder="Price..." formControlName="price"
+                appTwoDigitDecimaNumberDirective
+                [ngClass]="{ 'is-invalid': myForm.controls['price'].touched && myForm.controls['price'].errors, 'is-valid': myForm.controls['price'].valid }">
+            <div *ngIf="myForm.controls['price'].touched && myForm.controls['price'].errors" class="invalid-feedback">
+                <div *ngIf="myForm.controls['price'].errors['required']">Price is required!</div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-group" role="group" *ngIf="loader; else elseBlock">
+        <button type="submit" class="btn btn-primary mx-2" [disabled]="!myForm.valid">Guardar</button>
+        <a class="btn btn-warning" [routerLink]="['/home']" aria-disabled="true"> Volver</a>
+    </div>
+    <ng-template #elseBlock>
+        <div class="spinner-grow" role="status">
+            <span class="visually-hidden">guardando...</span>
+        </div>
+    </ng-template>
+</form>

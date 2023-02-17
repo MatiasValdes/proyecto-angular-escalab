@@ -1,0 +1,25 @@
+<figure class="text-center">
+    <h1> Estas mirando {{product.title}}</h1>
+    <div *ngIf="auth.user$ | async as user">
+        <a class="btn btn-warning" [routerLink]="['/editproduct', product.id]" aria-disabled="true">
+            Editar</a>
+    </div>
+</figure>
+
+<hr>
+<div class="row">
+    <div class="mx-auto d-block">
+        <div class="text-center">
+            <img [src]="product.image ? product.image : 'http://placehold.it/1024x1024'" class="img-fluid">
+        </div>
+        <br><br>
+        <hr>
+        <p> Descripción : {{product.description}}</p>
+        <div>
+            <p>Categoría : {{product.category}}</p>
+        </div>
+        <div class="btn-group" role="group">
+            <a class="btn btn-primary mx-2" [routerLink]="['/']"> Volver</a>
+        </div>
+    </div>
+</div>
